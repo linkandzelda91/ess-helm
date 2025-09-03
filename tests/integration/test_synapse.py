@@ -42,6 +42,8 @@ async def test_synapse_can_access_client_api(
 
     supports_qr_code_login = value_file_has("matrixAuthenticationService.enabled", True)
     assert supports_qr_code_login == json_content["unstable_features"]["org.matrix.msc4108"]
+    # Push notifications for encrypted messages
+    assert json_content["unstable_features"]["org.matrix.msc4028"]
 
 
 @pytest.mark.skipif(value_file_has("synapse.enabled", False), reason="Synapse not deployed")
